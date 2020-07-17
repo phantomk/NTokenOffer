@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nest nToken报价</title>
+</head>
+<body class="bk">
+<div style="text-align: center">
+    <h2>Nest nToken报价</h2>
+    <label th:text=${startMining}></label>  <button onclick="startMining()">修改状态</button>
+    <p></p>
+    <label>当前间隔区块: </label><label th:text=${intervalBlock}></label>
+    <p></p>
+    <label>钱包地址: </label><label th:text=${address}></label>
+    <p></p>
+    <label>设置间隔区块数量: </label>
+    <form id="updateIntervalBlock">
+        <input type="text" name="intervalBlock">
+        <input type="button" onclick="updateIntervalBlock()" value="提交"/>
+    </form>
+    <label>设置私钥: </label>
+    <form id="updatePrivateKey">
+        <input type="text" name="privateKey">
+        <input type="button" onclick="updatePrivateKey()" value="提交"/>
+    </form>
+</div>
+</body>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    function updateIntervalBlock(){
+        $.ajax({
+            type:"POST",
+            url:"http://127.0.0.1:8088/offer/updateIntervalBlock",
+            data:$('#updateIntervalBlock').serialize(),
+            success:function(result){
+                location.replace(location);
+            },
+            error:function(){
+                alert("请输入正确的区块间隔数量!!")
+            }
+    })
+    }
+    function updatePrivateKey(){
+        $.ajax({
+            type:"POST",
+            url:"http://127.0.0.1:8088/offer/updatePrivateKey",
+            data:$('#updatePrivateKey').serialize(),
+            success:function(result){
+                location.replace(location);
+            },
+            error:function(){
+                alert("请输入正确的私钥!!")
+            }
+        })
+    }
+    function startMining(){
+        $.ajax({
+            type:"POST",
+            url:"http://127.0.0.1:8088/offer/startMining",
+            data:$('').serialize(),
+            success:function(result){
+                location.replace(location);
+            },
+            error:function(){
+                alert("启动/关闭错误!!")
+            }
+        })
+    }
+</script>
+
+<style type="text/css">
+    .bk{
+        background-color: cadetblue;
+        background-size: 100% 100%;
+    }
+</style>
+</html>
+
