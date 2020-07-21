@@ -25,7 +25,7 @@ public class MiningController {
     /**
     * 开启/关闭挖矿. true开启,false关闭
     */
-    @GetMapping("/startMining")
+    @PostMapping("/startMining")
     public boolean startMining(){
         miningService.startMining();
         return miningService.selectStartMining();

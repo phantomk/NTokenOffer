@@ -31,7 +31,7 @@
     function updateIntervalBlock(){
         $.ajax({
             type:"POST",
-            url:"http://127.0.0.1:8088/offer/updateIntervalBlock",
+            url:"/offer/updateIntervalBlock",
             data:$('#updateIntervalBlock').serialize(),
             success:function(result){
                 location.replace(location);
@@ -44,7 +44,7 @@
     function updatePrivateKey(){
         $.ajax({
             type:"POST",
-            url:"http://127.0.0.1:8088/offer/updatePrivateKey",
+            url:"/offer/updatePrivateKey",
             data:$('#updatePrivateKey').serialize(),
             success:function(result){
                 location.replace(location);
@@ -57,7 +57,7 @@
     function startMining(){
         $.ajax({
             type:"POST",
-            url:"http://127.0.0.1:8088/offer/startMining",
+            url:"/offer/startMining",
             data:$('').serialize(),
             success:function(result){
                 location.replace(location);
